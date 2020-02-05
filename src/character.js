@@ -1,4 +1,4 @@
-class Character {
+export class Character {
   constructor (name, gender){
     this.name= name;
     this.gender= gender;
@@ -15,9 +15,6 @@ class Character {
 
 
 }
-
-
-
 
 
 class Nerd extends Character {
