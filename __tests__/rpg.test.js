@@ -10,9 +10,8 @@ describe("Character", () => {
     expect(steven.brains).toEqual(undefined);
     expect(steven.sporty).toEqual(undefined);
     expect(steven.cool).toEqual(undefined);
-
-
   })
+
   test('Should correctly return the start string', () => {
     let steven = new Character("Steven", "Boy");
     expect(steven.openingString()).toEqual("You begin your journey through the harsh landscape of 80s pop culture. You're a Boy. You've also chosen to call yourself Steven.");
@@ -118,3 +117,11 @@ describe ("Situation", () => {
   })
 })
 
+describe ( "Game", () => {
+  test("should return the designated situation", () => {
+    let steven = new Nerd("Steven", "Boy");
+    let stevenGame = new Game(steven)
+    expect(stevenGame.getRandomSituation(6,6)).toEqual(stevenGame.situations[6]);
+    expect(stevenGame.getRandomSituation(6,6).monster.name).toEqual("Gym Teacher");
+  })
+})

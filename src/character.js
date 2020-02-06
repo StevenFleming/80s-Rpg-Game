@@ -41,7 +41,7 @@ export function fight(player, npc, battleType){
 
   if (battleType === "fistFight") {
     skill = "sporty";
-  } else if (battleType === "outSmart") {
+  } else if (battleType === "outsmart") {
     skill = "brains";
   } else {
     skill = "cool";

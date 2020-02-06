@@ -2,8 +2,8 @@ import { Character } from "./character.js";
 
 export class Game { 
   constructor(player){
-    const lunch = new Situation("The Lunch Lady", "woman", "in the cafeteria", 75, 110, 50);
-    const bus = new Situation("The Bus Driver", "man", "on the school bus", 50, 110, 75);
+    const lunch = new Situation("Lunch Lady", "woman", "in the cafeteria", 75, 110, 50);
+    const bus = new Situation("Bus Driver", "man", "on the school bus", 50, 110, 75);
     const math = new Situation("Math Teacher", "man", "in math class", 110, 75, 50);
     const hall = new Situation("Vice Principal", "woman", "in the hallway", 110, 75, 50);
     const locker = new Situation("School Bully", "boy", "in the locker room", 50, 110, 75);
@@ -16,7 +16,7 @@ export class Game {
   }
 
   getRandomSituation(min, max) {
-    let situation = Math(Math.random() * (max - min) ) + min;
+    let situation = Math.floor(Math.random() * (max - min) ) + min;
     return this.situations[situation];
   }
 }
@@ -34,8 +34,8 @@ export class Situation {
   }
 }
 
-// const lunch = new Situation("The Lunch Lady", "woman", "in the cafeteria", 75, 110, 50);
-// const bus = new Situation("The Bus Driver", "man", "on the school bus", 50, 110, 75);
+// const lunch = new Situation("Lunch Lady", "woman", "in the cafeteria", 75, 110, 50);
+// const bus = new Situation("Bus Driver", "man", "on the school bus", 50, 110, 75);
 // const math = new Situation("Math Teacher", "man", "in math class", 110, 75, 50);
 // const hall = new Situation("Vice Principal", "woman", "in the hallway", 110, 75, 50);
 // const locker = new Situation("School Bully", "boy", "in the locker room", 50, 110, 75);
