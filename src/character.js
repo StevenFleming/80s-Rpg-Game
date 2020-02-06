@@ -18,8 +18,12 @@ export class Character {
 
 export function fistFight(player, npc){
   if (npc.athleticism > player.athleticism){
+    npc.vitality += 2;
+    player.vitality -= 1;
     return npc;
   } else if (npc.athleticism< player.athleticism){
+    player.vitality +=2;
+    npc.vitality-=1;
     return player;
   } else {
     npc.vitality += 1;

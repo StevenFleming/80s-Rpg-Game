@@ -41,6 +41,8 @@ describe ("fistFight()", () => {
     let npc = new Jock("Chad", "Boy");
     let steven = new Nerd("Steven", "Boy");
     expect(fistFight(steven, npc)).toEqual(npc);
+    expect(npc.vitality).toEqual(12);
+    expect(steven.vitality).toEqual(9);
   })
 
   test('should return false if there is a tie, but each player level should increase by 1', () => {
