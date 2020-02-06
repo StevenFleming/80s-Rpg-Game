@@ -1,3 +1,6 @@
+# 80s High School RPG
+## By Steven Fleming and Krista Rutz. Last updated February 6, 2020.
+
 ## SPECS
 
 | spec behavior | input | output |
