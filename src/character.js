@@ -6,17 +6,20 @@ export class Character {
     this.brains;
     this.sporty;
     this.cool;
+    this.encounterCount = 0;
   }
 
   openingString() {
    let textStart = `You begin your journey through the harsh landscape of 80s pop culture. You're a ${this.gender}. You've also chosen to call yourself ${this.name}.`;
    return textStart;
   }
+
   leveler(adjustment) {
     this.vitality += adjustment;
     this.brains += (adjustment * (this.baseBrains/10));
     this.sporty += (adjustment * (this.baseSporty/10));
     this.cool += (adjustment * (this.baseCool/10));
+    this.encounterCount++;
   }
 
   assignStat(stat, value){
@@ -30,7 +33,6 @@ export class Character {
     this.sporty = sporty;
     this.cool = cool;
   }
-
 }
 
 export function fight(player, npc, battleType){

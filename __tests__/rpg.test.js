@@ -1,4 +1,5 @@
 import {Character, Nerd, Prep, Jock, fight} from '../src/character.js';
+import {Situation, Game} from '../src/situation.js'
 
 describe("Character", () => {
   test('Should correctly create character object', () => {
@@ -103,3 +104,17 @@ describe ("fight()", () => {
   })
 
 })
+
+describe ("Situation", () => {
+  test("should correctly construct a new situation", () => {
+    let lunch = new Situation("The Lunch Lady", "woman", "in the cafeteria", 75, 110, 50);
+    expect(lunch.setting).toEqual("in the cafeteria");
+    expect(lunch.monster.name).toEqual("The Lunch Lady");
+    expect(lunch.monster.brains).toEqual(75);
+  })
+  test("should correctly return a summary of the situation", () => {
+    let lunch = new Situation("The Lunch Lady", "woman", "in the cafeteria", 75, 110, 50);
+    expect(lunch.getSituationSummary()).toEqual(`You spot The Lunch Lady in the cafeteria.`);
+  })
+})
+
