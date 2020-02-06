@@ -3,59 +3,81 @@ export class Character {
     this.name= name;
     this.gender= gender;
     this.vitality;
-    this.knowledge;
-    this.athleticism;
+    this.brains;
+    this.sporty;
     this.cool;
   }
 
-  toString() {
+  openingString() {
    let textStart = `You begin your journey through the harsh landscape of 80s pop culture. You're a ${this.gender}. You've also chosen to call yourself ${this.name}.`;
    return textStart;
   }
+  leveler(adjustment) {
+    this.vitality += adjustment;
+    this.brains += (adjustment * (this.baseBrains/10));
+    this.sporty += (adjustment * (this.baseSporty/10));
+    this.cool += (adjustment * (this.baseCool/10));
+  }
 
+  assignStat(stat, value){
+    this[stat] = value;
+    return this[stat];
+  }
+
+  assignStats(vitality, brains, sporty, cool){
+    this.vitality = vitality;
+    this.brains = brains;
+    this.sporty = sporty;
+    this.cool = cool;
+  }
 
 }
 
-export function fistFight(player, npc){
-  if (npc.athleticism > player.athleticism){
-    npc.vitality += 2;
-    player.vitality -= 1;
+export function fight(player, npc, battleType){
+  
+  let skill;
+
+  if (battleType === "fistFight") {
+    skill = "sporty";
+  } else if (battleType === "outSmart") {
+    skill = "brains";
+  } else {
+    skill = "cool";
+  }
+
+  if (npc[skill] > player[skill]){
+    npc.leveler(2);
+    player.leveler(-1);
     return npc;
-  } else if (npc.athleticism< player.athleticism){
-    player.vitality +=2;
-    npc.vitality-=1;
+  } else if (npc[skill]< player[skill]){
+    npc.leveler(-1);
+    player.leveler(2);
     return player;
   } else {
-    npc.vitality += 1;
-    player.vitality += 1;
+    npc.leveler(1);
+    player.leveler(1);
     return false;
   }
-};
-
-export function outSmart(player, npc){
-  if (npc.knowledge > player.knowledge){
-    return npc;
-  } else {
-    return player;
-  }
-};
-
-export function cloutWar(player, npc){
-  if (npc.cool > player.cool){
-    return npc;
-  } else {
-    return player;
-  }
-};
+}
 
 export class Nerd extends Character {
   // Methodies Modifies Base Class Attributes
   constructor (name, gender) {
     super(name, gender);
     this.vitality= 10;
-    this.knowledge= 175;
-    this.athleticism= 75;
-    this.cool= 50;
+    const nerdBrains = 100;
+    const nerdSporty = 50;
+    const nerdCool = 50;
+
+
+    this.baseBrains = nerdBrains;
+    this.brains= nerdBrains;
+
+    this.baseSporty= nerdSporty;
+    this.sporty = nerdSporty;
+
+    this.baseCool= nerdCool;
+    this.cool = nerdCool;
   }
 }
 
@@ -64,9 +86,19 @@ export class Prep extends Character {
   constructor (name, gender) {
     super(name, gender);
     this.vitality= 10;
-    this.knowledge= 75;
-    this.athleticism=75;
-    this.cool= 150;
+    const prepBrains = 50;
+    const prepSporty = 50;
+    const prepCool = 100;
+
+
+    this.baseBrains = prepBrains;
+    this.brains= prepBrains;
+
+    this.baseSporty= prepSporty;
+    this.sporty = prepSporty;
+
+    this.baseCool= prepCool;
+    this.cool = prepCool;
   }
 }
 
@@ -75,8 +107,18 @@ export class Jock extends Character {
   constructor (name, gender) {
     super(name, gender);
     this.vitality= 10;
-    this.knowledge= 25;
-    this.athleticism=150;
-    this.cool= 125;
+    const jockBrains = 50;
+    const jockSporty = 100;
+    const jockCool = 50;
+
+
+    this.baseBrains = jockBrains;
+    this.brains= jockBrains;
+
+    this.baseSporty= jockSporty;
+    this.sporty = jockSporty;
+
+    this.baseCool= jockCool;
+    this.cool = jockCool;
   }
 }
